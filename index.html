@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy New Year My Love ❤️</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(120deg, #ff9a9e, #fad0c4);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .card {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        width: 90%;
+        max-width: 420px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        animation: pop 1s ease;
+        z-index: 2;
+    }
+
+    @keyframes pop {
+        from {transform: scale(0.5); opacity: 0;}
+        to {transform: scale(1); opacity: 1;}
+    }
+
+    h1 {
+        color: #ff4b5c;
+        margin-bottom: 10px;
+    }
+
+    #countdown {
+        font-size: 18px;
+        color: #ff4b5c;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+
+    p {
+        color: #444;
+        font-size: 16px;
+        line-height: 1.6;
+        white-space: pre-line;
+    }
+
+    .heart {
+        position: fixed;
+        color: red;
+        font-size: 20px;
+        animation: fall 4s linear infinite;
+        z-index: 1;
+    }
+
+    @keyframes fall {
+        0% {transform: translateY(-10vh); opacity: 1;}
+        100% {transform: translateY(110vh); opacity: 0;}
+    }
+
+    .tap {
+        font-size: 14px;
+        color: #777;
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+
+<!-- Background Music -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_7c1f0b9dfb.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+    <h1>🎆 Happy New Year 🎆</h1>
+    <div id="countdown">Loading countdown...</div>
+
+    <p>
+My Dear future wifee ♥️,
+
+Happy new year 🎆  
+Bass me itna hi kahana chahunga ki chahe kitne bhi naye saal aya lekin hamara pyaar 💖 bass hi rahe.
+
+I love you my bunny 🐰 💞....
+    </p>
+
+    <div class="tap">💖 From your forever person 💖</div>
+</div>
+
+<script>
+    // Hearts animation
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+    }
+    setInterval(createHeart, 300);
+
+    // Countdown
+    const targetDate = new Date("January 1, 2026 00:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    setInterval(() => {
+        const now = new Date().getTime();
+        const diff = targetDate - now;
+
+        if (diff < 0) {
+            countdownEl.innerHTML = "🎉 Happy New Year My Love 🎉";
+            return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        countdownEl.innerHTML =
+            `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left for New Year 💞`;
+    }, 1000);
+</script>
+
+</body>
+</html>
